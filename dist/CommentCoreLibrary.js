@@ -1061,7 +1061,7 @@ var CommentManager = (function() {
     CommentManager.prototype.load = function(a){
         this.timeline = a;
         this.timeline.sort(_defaultComparator);
-        this.dispatchEvent("load");
+        this.dispatchEvent("load", a);
     };
 
     CommentManager.prototype.insert = function(c){
@@ -1069,7 +1069,7 @@ var CommentManager = (function() {
         if (index <= this.position) {
             this.position++;
         }
-        this.dispatchEvent("insert");
+        this.dispatchEvent("insert", c);
     };
 
     CommentManager.prototype.clear = function () {
@@ -1152,6 +1152,7 @@ var CommentManager = (function() {
             }
         }
         var cmt = this.factory.create(this, data);
+        this.dispatchEvent("beforeEnterComment", cmt);
         switch (cmt.mode) {
             default:
             case 1:

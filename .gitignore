@@ -21,3 +21,6 @@
 .baseDir.ts
 .baseDir.js
 .baseDir.js.map
+
+# Ignore npm log
+npm-debug.log
